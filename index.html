@@ -366,28 +366,184 @@
 
     footer a { color: var(--orange); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--orange); }
+
+    /* Nav logo image */
+    .nav-logo-img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 200;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--tan);
+      border-radius: 1px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(2, 24, 34, 0.97);
+      backdrop-filter: blur(20px);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--tan);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      transition: color 0.15s;
+    }
+
+    .mobile-nav a:hover { color: var(--orange); }
+
+    .mobile-nav .mobile-x-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border: 1px solid var(--orange);
+      border-radius: 2px;
+      color: var(--orange);
+      font-size: 14px;
+    }
+
+    .mobile-nav .mobile-x-btn:hover {
+      background: var(--orange);
+      color: white;
+    }
+
+    /* Hero wordmark */
+    .hero-wordmark {
+      max-width: 340px;
+      width: 80%;
+      height: auto;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 600;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    .hero-subtitle-tagline span { color: var(--orange); }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-wordmark { max-width: 260px; }
+    }
   </style>
 </head>
 <body>
 
 <nav>
   <div class="inner">
-    <a href="/" class="logo-text">⚡ CAPACITR</a>
+    <a href="/" style="text-decoration:none;display:flex;align-items:center;">
+      <img src="brand/wordmark.png" alt="CAPACITR" class="nav-logo-img">
+    </a>
     <div class="nav-links">
       <a href="https://spec.capacitr.lol">SPEC</a>
+      <a href="https://app.capacitr.lol">APP</a>
       <a href="https://x.com/capacitr_xyz" target="_blank" class="btn-x">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         @CAPACITR_XYZ
       </a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleMobileNav()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="/" onclick="closeMobileNav()">HOME</a>
+  <a href="https://spec.capacitr.lol" onclick="closeMobileNav()">SPEC</a>
+  <a href="https://app.capacitr.lol" onclick="closeMobileNav()">APP</a>
+  <a href="https://x.com/capacitr_xyz" target="_blank" class="mobile-x-btn" onclick="closeMobileNav()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    @CAPACITR_XYZ
+  </a>
+</div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-badge">SYSTEM INITIALIZED // V1.0</div>
   <img src="brand/logo.png" alt="CAPACITR" class="hero-logo">
-  <h1>Signal to <span>Position</span></h1>
+  <img src="brand/wordmark.png" alt="CAPACITR" class="hero-wordmark">
+  <h1 class="hero-subtitle-tagline">Signal to <span>Position</span></h1>
   <p class="subtitle">
     Capacitr absorbs signals from across the internet — trends, news, social chatter — charges them with intelligence, and discharges matched predictions and trades when you need them.
   </p>
@@ -548,9 +704,30 @@
 </section>
 
 <footer>
+  <div class="footer-links">
+    <a href="/">HOME</a>
+    <a href="https://spec.capacitr.lol">SPEC</a>
+    <a href="https://app.capacitr.lol">APP</a>
+    <a href="https://x.com/capacitr_xyz" target="_blank">X / TWITTER</a>
+  </div>
   <p>CAPACITR // HIGH-PRECISION KINETIC PROTOCOL // <a href="https://x.com/capacitr_xyz" target="_blank">@CAPACITR_XYZ</a></p>
   <p style="margin-top: 8px; color: #333;">© 2026 CAPACITR. ALL RIGHTS RESERVED.</p>
 </footer>
+
+<script>
+  function toggleMobileNav() {
+    const nav = document.getElementById('mobileNav');
+    const btn = document.getElementById('hamburger');
+    nav.classList.toggle('open');
+    btn.classList.toggle('active');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+</script>
 
 </body>
 </html>
