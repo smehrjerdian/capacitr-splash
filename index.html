@@ -36,6 +36,7 @@
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
     }
 
     .font-grotesk { font-family: 'Space Grotesk', Arial, sans-serif; }
@@ -52,11 +53,16 @@
     nav {
       position: fixed;
       top: 0;
-      width: 100%;
+      left: 0;
+      right: 0;
       z-index: 100;
       background: var(--orange);
-      backdrop-filter: none;
       border-bottom: none;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      padding-top: env(safe-area-inset-top, 0px);
     }
 
     nav .inner {
@@ -437,8 +443,8 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      right: 0;
+      bottom: 0;
       background: rgba(0, 43, 27, 0.97);
       backdrop-filter: blur(20px);
       z-index: 150;
@@ -446,6 +452,8 @@
       align-items: center;
       justify-content: center;
       gap: 32px;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
     }
 
     .mobile-nav.open {
