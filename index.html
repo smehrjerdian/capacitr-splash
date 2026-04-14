@@ -19,7 +19,8 @@
   <meta name="twitter:description" content="Every headline has a market, and every opinion deserves a position.">
   <meta name="twitter:image" content="https://app.capacitr.lol/brand/og-splash.png">
   <meta name="twitter:site" content="@capacitr_xyz">
-  <link rel="icon" href="https://app.capacitr.lol/brand/favicon.png" type="image/png">
+  <link rel="icon" href="brand/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="brand/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -412,6 +413,14 @@
       filter: brightness(0) invert(1);
     }
 
+    .nav-badge-img {
+      height: 28px;
+      width: 28px;
+      display: block;
+      filter: brightness(0) invert(1);
+      flex-shrink: 0;
+    }
+
     /* Hamburger */
     .hamburger {
       display: none;
@@ -528,7 +537,8 @@
 
 <nav>
   <div class="inner">
-    <a href="/" style="text-decoration:none;display:flex;align-items:center;">
+    <a href="/" style="text-decoration:none;display:flex;align-items:center;gap:8px;">
+      <img src="brand/badge.png" alt="C" class="nav-badge-img">
       <img src="brand/wordmark.png" alt="CAPACITR" class="nav-logo-img">
     </a>
     <div class="nav-links">
